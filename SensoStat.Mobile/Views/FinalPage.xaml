@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SensoStat.Mobile.Views.FinalPage">
+    <StackLayout BackgroundColor="White">
+        <Frame BackgroundColor="White" Padding="12" CornerRadius="0">
+            <Image Source="logo.png" />
+        </Frame>
+        <Label Text="Merci de votre participation à cette séance." HorizontalTextAlignment="Center"  TextColor="Black" FontSize="20" Margin="0,25,0,10"/>
+        <Label Text="Vous pouvez fermer la page." HorizontalTextAlignment="Center"  VerticalOptions="StartAndExpand" TextColor="Black" FontSize="20" Margin="10"/>
+        <Button  Text="Fermer" Command="{Binding CloseCommand}" TextColor="White" FontSize="20" Background="#fd7e14" VerticalOptions="End" Margin="10,25,10,10"/>
+    </StackLayout>
+</ContentPage>

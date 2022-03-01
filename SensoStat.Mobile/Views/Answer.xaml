@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SensoStat.Mobile.Views.Answer">
+    <StackLayout BackgroundColor="white">
+        <Label Text="{Binding Instruction}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24" Margin="0,24,0,24"/>
+        <Label FontSize="26" Padding="30,24,30,0" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="0,24,0,50">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="{Binding Product} "  TextColor="Purple" FontAttributes="bold" FontSize="24" />
+                        <Span Text=" ?" TextColor="Black" FontSize="24"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label Text="Pour répondre, dites:" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24"/>
+        <Button  Text="Répondre" TextColor="White" FontSize="24" Command="{Binding GoAnswerCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+        <Label Text="Pour répéter la question, dites:" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24"/>
+        <Button  Text="Répéter" TextColor="White" FontSize="24" Command="{Binding ReadCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+    </StackLayout>
+</ContentPage>

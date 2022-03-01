@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.20.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Prism.Forms" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Commons\" />
+    <None Remove="Helpers\" />
+    <None Remove="Models\" />
+    <None Remove="Repositories\" />
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\" />
+    <None Remove="Prism.DryIoc.Forms" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Prism.Forms" />
+    <None Remove="Helpers\Interface\" />
+    <None Remove="Repositories\Interface\" />
+    <None Remove="Models\Dtos\" />
+    <None Remove="Models\Entities\" />
+    <None Remove="Models\Entities\Interfaces\" />
+    <None Remove="Microsoft.CognitiveServices.Speech" />
+    <None Remove="Models\EntitiesWrapper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commons\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+    <Folder Include="Helpers\Interface\" />
+    <Folder Include="Repositories\Interface\" />
+    <Folder Include="Models\Dtos\" />
+    <Folder Include="Models\Entities\" />
+    <Folder Include="Models\Entities\Interfaces\" />
+    <Folder Include="Models\EntitiesWrapper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Answer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

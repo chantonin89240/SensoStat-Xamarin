@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SensoStat.Mobile.Views.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout BackgroundColor="White">
+        <Frame BackgroundColor="White" Padding="0,20,0,10" CornerRadius="0">
+            <Image x:Name="logo"> 
+                <Image.Source> 
+                    <OnPlatform x:TypeArguments="ImageSource"> 
+                        <On Platform="Android" Value="logo.png"/>
+                        <On Platform="iOS" Value="logo"/>
+                    </OnPlatform> 
+                </Image.Source> 
+            </Image>
+        </Frame>
+        <StackLayout  BackgroundColor="White" Padding="10">
+            <Label Text="{Binding Title}" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24" Margin="0,24,0,24"/>
+            <!--<Label Text="{Binding MsgAccueil}" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" TextColor="Black" FontSize="24" Margin="0,24,0,50"/>-->
+            <Label Text="Cliquez ou dites :" HorizontalTextAlignment="Center" TextColor="Black" FontSize="24"/>
+            <Button  Text="Etape suivante" TextColor="White" FontSize="24" Command="{Binding StartCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="10" />
+         </StackLayout>
+    </StackLayout>
+
+</ContentPage>
