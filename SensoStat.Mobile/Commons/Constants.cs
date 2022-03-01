@@ -17,8 +17,9 @@ namespace SensoStat.Mobile.Commons
 
 
 		// Routes
-		public const string BaseServerAddress = "https://localhost:5001/api/";
-		public const string RandomEndpoint = "Pwa?hash=H9UOcgfQWdmUZxrco804UKqSftKCEgE4FeU5QMbOJnw%3D";
+		public const string BaseServerAddress = "https://10.0.2.2:5001/api/";
+		public const string RandomEndpoint = "Pwa?hash=Hd/em3doKJJzz2o/2YeMiThr1ys7l37nqnL7K3i/huk=";
+		public const string PostResponse = "Pwa/";
 
 		// https://localhost:5001/api/Pwa?hash=H9UOcgfQWdmUZxrco804UKqSftKCEgE4FeU5QMbOJnw%3D
 	}

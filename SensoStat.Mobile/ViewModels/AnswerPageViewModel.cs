@@ -4,6 +4,7 @@ using Microsoft.CognitiveServices.Speech;
 using Prism.Commands;
 using Prism.Navigation;
 using SensoStat.Mobile.Commons;
+using SensoStat.Mobile.Models.Dtos;
 using SensoStat.Mobile.Services.Interfaces;
 using SensoStat.ViewModels.Base;
 using Xamarin.Forms;
@@ -14,7 +15,7 @@ namespace SensoStat.Mobile.ViewModels
     {
 
         #region CTOR
-        public AnswerPageViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
+        public AnswerPageViewModel(IAlertdialogService alertdialogService, INavigationService navigationService, IRequestService requestService) : base(alertdialogService, navigationService)
         {
             //micService = DependencyService.Resolve<IMicrophoneService>();
 
@@ -23,6 +24,7 @@ namespace SensoStat.Mobile.ViewModels
             TranscribeCommand = new DelegateCommand(async () => await DoTranscribeCommand());
 
             micService = DependencyService.Resolve<IMicrophoneService>();
+            _requestService = requestService;
         }
 
         #endregion
@@ -35,7 +37,7 @@ namespace SensoStat.Mobile.ViewModels
 
         #endregion
         #region Privates
-
+        private IRequestService _requestService;
         #endregion
         #region Publics
         SpeechRecognizer recognizer;
@@ -79,6 +81,21 @@ namespace SensoStat.Mobile.ViewModels
 
         private async Task DoNextCommand()
         {
+            var response =this.TextEditor;
+            var idPaneliste = this.Session.IdPanelist;
+            var idInstruction = this.Instructions[Index].Id;
+            var idproduit = this.Presentations[IndexProduct].IdProduct;
+
+            ResponseDownDto responseDto = new ResponseDownDto()
+            {
+                IdInstruction = idInstruction,
+                IdProduct = idproduit,
+                IdPaneliste = idPaneliste,
+                CommentResponse = response,
+                Token = "a",
+            };
+
+            await _requestService.PostReponse(responseDto);
 
             if (Index < Instructions.Count-1 && !Instructions[Index+1].IsQuestion)
             {
@@ -106,7 +123,7 @@ namespace SensoStat.Mobile.ViewModels
 
         private async Task DoCleanEditorCommand()
         {
-
+            TextEditor = string.Empty;
         }
 
         public DelegateCommand TranscribeCommand { get; set; }

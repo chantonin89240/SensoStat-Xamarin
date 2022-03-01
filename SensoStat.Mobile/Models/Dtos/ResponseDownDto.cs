@@ -5,12 +5,15 @@ namespace SensoStat.Mobile.Models.Dtos
 {
     public class ResponseDownDto
     {
-        public int Id { get; set; }
+        [JsonProperty("token")] public string Token { get; set; }
 
-        public string Content { get; set; }
+        [JsonProperty("idInstruction")] public int IdInstruction { get; set; }
 
-        public InstructionDownDto Instruction { get; set; }
+        [JsonProperty("idPanelist")] public int IdPaneliste { get; set; }
 
-        public int IdProduct { get; set; }
+        [JsonProperty("idProduct")] public int IdProduct { get; set; }
+
+        [JsonProperty("commentResponse")] public string CommentResponse { get; set; }
+
     }
 }

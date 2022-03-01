@@ -8,5 +8,6 @@ namespace SensoStat.Mobile.Services.Interfaces
     {
 
         Task<SessionDownDto> GetSession();
+        Task<ResponseDownDto> PostReponse(ResponseDownDto response);
     }
 }
