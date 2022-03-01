@@ -13,7 +13,7 @@
 	        CornerRadius="3"
 	        HasShadow="True"
 	        OutlineColor="Black">
-            <Editor x:Name="transcribedText" AutoSize="TextChanges" TextColor="Black"  HeightRequest="84" >
+            <Editor Text="{Binding TextEditor}" AutoSize="TextChanges" TextColor="Black"  HeightRequest="84" >
                 <Editor.BackgroundColor>
                     <OnPlatform x:TypeArguments="x1:Color">
                         <On Platform="iOS" Value="WhiteSmoke" />
@@ -32,7 +32,7 @@
         </Image>
         <ActivityIndicator x:Name="transcribingIndicator"
                         IsRunning="False" />
-        <Button x:Name="transcribeButton" Text="Répondre" TextColor="White" FontSize="20" Clicked="DoTranscribeCommand" Background="#fd7e14" VerticalOptions="Center" Margin="20,5,20,5" />
+        <Button Text="{Binding TextButton}" TextColor="White" FontSize="20" Command="{Binding TranscribeCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="20,5,20,5" />
         <Label Text="Pour valider, dites:" HorizontalTextAlignment="Center" TextColor="Black" FontSize="14"/>
         <Button  Text="Valider" TextColor="White" FontSize="20" Command="{Binding NextCommand}" Background="#fd7e14" VerticalOptions="Center" Margin="20,5,20,5" />
         <Label Text="Pour reformuler, dites:" HorizontalTextAlignment="Center" TextColor="Black" FontSize="14"/>

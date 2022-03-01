@@ -17,8 +17,6 @@ namespace SensoStat.ViewModels.Base
         #region CTOR
         public BaseViewModel(IAlertdialogService alertdialogService, INavigationService navigationService)
         {
-            ActiveBool = false;
-
             _speechConfig = SpeechConfig.FromSubscription(Constants.CognitiveServicesApiKey, Constants.CognitiveServicesRegion);
 
             ReadCommand = new DelegateCommand(async () => await DoReadCommand());
@@ -184,7 +182,10 @@ namespace SensoStat.ViewModels.Base
         public async Task DoReadCommand()
         {
             if (IsBusy)
+            {
                 return;
+            }
+                
             IsBusy = true;
             await SpeechUp(Question);
             IsBusy = false;
@@ -194,6 +195,12 @@ namespace SensoStat.ViewModels.Base
         #region Methods
         public async Task SpeechUp(string text)
         {
+            //if (IsBusy)
+            //{
+            //    return;
+            //}
+                
+            IsBusy = true;
             ActiveBool = true;
 
             if (_speechSynthesizer == null)
@@ -203,8 +210,8 @@ namespace SensoStat.ViewModels.Base
             }
 
             await _speechSynthesizer.SpeakTextAsync(text);
-
             ActiveBool = false;
+            IsBusy = false;
         }
 
         public string GetInstruction()

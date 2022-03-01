@@ -53,6 +53,8 @@ namespace SensoStat.Mobile.ViewModels
         {
             await NavigationService.NavigateAsync(Constants.TextToSpeech);
         }
+
+        
         #endregion
         #region Methods
 
