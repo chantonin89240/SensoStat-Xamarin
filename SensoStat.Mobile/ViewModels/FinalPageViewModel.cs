@@ -18,7 +18,10 @@ namespace SensoStat.Mobile.ViewModels
         }
         #endregion
         #region Lifecycle
-
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
+            await SpeechUp(MsgFinal);
+        }
         #endregion
         #region Privates
 

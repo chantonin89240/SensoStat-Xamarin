@@ -19,7 +19,13 @@ namespace SensoStat.Mobile.ViewModels
         }
         #endregion
         #region Lifecycle
+        public override async void OnNavigatedTo(INavigationParameters parameters)
+        {
 
+            await SpeechUp(Instruction);
+
+            base.OnNavigatedTo(parameters);
+        }
         #endregion
         #region Privates
 
@@ -32,16 +38,20 @@ namespace SensoStat.Mobile.ViewModels
 
         private async Task DoNextCommand()
         {
-            var test = !Instructions[Index + 1].IsQuestion;
             if (Index < Instructions.Count-1 && !Instructions[Index+1].IsQuestion)
             {
                 Index++;
                 Instruction = GetInstruction();
+                await SpeechUp(Instruction);
             }
-            else
+            else if (Index < Instructions.Count - 1)
             {
                 Index++;
                 await NavigationService.NavigateAsync(Constants.Answer);
+            }
+            else
+            {
+                await NavigationService.NavigateAsync(Constants.FinalPage);
             }
         }
         #endregion

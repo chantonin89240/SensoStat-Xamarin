@@ -17,14 +17,14 @@ namespace SensoStat.ViewModels.Base
         #region CTOR
         public BaseViewModel(IAlertdialogService alertdialogService, INavigationService navigationService)
         {
+            ActiveBool = false;
+
+            _speechConfig = SpeechConfig.FromSubscription(Constants.CognitiveServicesApiKey, Constants.CognitiveServicesRegion);
+
             ReadCommand = new DelegateCommand(async () => await DoReadCommand());
 
             NavigationService = navigationService;
             AlertDialogService = alertdialogService;
-
-            //Instruction = GetInstruction();
-
-            //Product = GetProduct();
         }
         #endregion
 
@@ -113,6 +113,16 @@ namespace SensoStat.ViewModels.Base
         }
         #endregion
 
+        #region Question =>  string
+        private string _question;
+
+        public string Question
+        {
+            get => _question;
+            set => SetProperty(ref _question, value);
+        }
+        #endregion
+
         #region Product =>  string
         private string _product;
 
@@ -176,13 +186,13 @@ namespace SensoStat.ViewModels.Base
             if (IsBusy)
                 return;
             IsBusy = true;
-            await SpeechUp(Instruction);
+            await SpeechUp(Question);
             IsBusy = false;
         }
         #endregion
 
         #region Methods
-        private async Task SpeechUp(string text)
+        public async Task SpeechUp(string text)
         {
             ActiveBool = true;
 

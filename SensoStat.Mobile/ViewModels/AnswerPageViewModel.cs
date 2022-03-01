@@ -21,13 +21,15 @@ namespace SensoStat.Mobile.ViewModels
             //micService = DependencyService.Resolve<IMicrophoneService>();
 
             NextCommand = new DelegateCommand(async () => await DoNextCommand());
+
+            
         }
 
         #endregion
         #region Lifecycle
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-
+            await SpeechUp("C'est à vous");
         }
 
 
@@ -36,6 +38,8 @@ namespace SensoStat.Mobile.ViewModels
 
         #endregion
         #region Publics
+        
+
 
         #endregion
         #region Commands
@@ -44,10 +48,20 @@ namespace SensoStat.Mobile.ViewModels
         private async Task DoNextCommand()
         {
 
-            if (Index < Instructions.Count-1) // && !Intructions[Index+1].IsQuestion
+            if (Index < Instructions.Count-1 && !Instructions[Index+1].IsQuestion)
             {
                 Index++;
-                // si instruction et produit tatati tatata
+                await NavigationService.NavigateAsync(Constants.HomeSession);
+            }
+            else if (Index < Instructions.Count - 1)
+            {
+                Index++;
+                await NavigationService.NavigateAsync(Constants.Answer);
+            }
+            else if (IndexProduct < Presentations.Count-1)
+            {
+                Index = 0;
+                IndexProduct++;
                 await NavigationService.NavigateAsync(Constants.HomeSession);
             }
             else

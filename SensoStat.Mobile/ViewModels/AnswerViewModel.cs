@@ -17,15 +17,16 @@ namespace SensoStat.Mobile.ViewModels
             GoAnswerCommand = new DelegateCommand(async () => await DoGoAnswerCommand());
 
             GoSpeechCommand = new DelegateCommand(async () => await DoGoSpeechCommand());
+
+            Question = GetInstruction();
+            Product = GetProduct();
         }
 
         #endregion
         #region Lifecycle
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public override async void OnNavigatedTo(INavigationParameters parameters)
         {
-            ActiveBool = false;
-
-            _speechConfig = SpeechConfig.FromSubscription(Constants.CognitiveServicesApiKey, Constants.CognitiveServicesRegion);
+            await SpeechUp(Question);
 
             base.OnNavigatedTo(parameters);
         }

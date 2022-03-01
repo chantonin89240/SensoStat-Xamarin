@@ -20,9 +20,7 @@ namespace SensoStat.Mobile.ViewModels
             _requestService = requestService;
             _databaseService = databaseService;
 
-            StartCommand = new DelegateCommand(async () => await DoStartCommand());
-
-           
+            StartCommand = new DelegateCommand(async () => await DoStartCommand());  
         }
 
         #endregion
@@ -95,7 +93,9 @@ namespace SensoStat.Mobile.ViewModels
                     Instruction = GetInstruction();
                     Product = GetProduct();
 
-                    SaveSession();
+                    await SpeechUp(MsgAccueil);
+
+                    await SaveSession();
                 }
                 else
                 {
