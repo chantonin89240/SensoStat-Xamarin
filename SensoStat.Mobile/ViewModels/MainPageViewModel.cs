@@ -85,10 +85,15 @@ namespace SensoStat.Mobile.ViewModels
                 if (session != null)
                 {
                     Session = new SessionEntity(session);
-                    session.Instructions.ForEach(i => InstructionsR.Add(new InstructionEntity(i)));
+                    session.Instructions.ForEach(i => Instructions.Add(new InstructionEntity(i)));
                     session.Presentations.ForEach(p => Presentations.Add(new PresentationEntity(p)));
 
+                    var test = Instructions;
+
+                    MsgAccueil = GetMsgAccueil();
                     Title = GetMsgAccueil();
+                    Instruction = GetInstruction();
+                    Product = GetProduct();
 
                     SaveSession();
                 }
@@ -115,7 +120,7 @@ namespace SensoStat.Mobile.ViewModels
                 }
 
                 var result = _databaseService.InsertSession(Session);
-                InstructionsR.ForEach(i => _databaseService.InsertInstruction(i));
+                Instructions.ForEach(i => _databaseService.InsertInstruction(i));
                 Presentations.ForEach(p => _databaseService.InsertPresentation(p));
 
                 if (result != null)

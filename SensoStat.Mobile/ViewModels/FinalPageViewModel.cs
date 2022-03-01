@@ -14,7 +14,7 @@ namespace SensoStat.Mobile.ViewModels
         {
             CloseCommand = new DelegateCommand(() => DoCloseCommand());
 
-            Title = "Bienvenue sur votre séance sensorielle SensoStat!";
+            MsgFinal = GetMsgFinal();
         }
         #endregion
         #region Lifecycle
@@ -24,7 +24,15 @@ namespace SensoStat.Mobile.ViewModels
 
         #endregion
         #region Publics
+        #region MsgFinal =>  string
+        private string _msgFinal;
 
+        public string MsgFinal
+        {
+            get => _msgFinal;
+            set => SetProperty(ref _msgFinal, value);
+        }
+        #endregion
         #endregion
         #region Commands
         public DelegateCommand CloseCommand { get; set; }

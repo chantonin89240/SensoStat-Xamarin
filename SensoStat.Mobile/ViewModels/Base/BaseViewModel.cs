@@ -22,9 +22,9 @@ namespace SensoStat.ViewModels.Base
             NavigationService = navigationService;
             AlertDialogService = alertdialogService;
 
-            Instruction = GetInstruction();
+            //Instruction = GetInstruction();
 
-            Product = GetProduct();
+            //Product = GetProduct();
         }
         #endregion
 
@@ -63,18 +63,18 @@ namespace SensoStat.ViewModels.Base
         // Public attribut
         #region  List<InstructionEntity> => Instructions
 
-        private List<InstructionEntity> _instructionsr = new List<InstructionEntity>();
+        private static List<InstructionEntity> _instructions = new List<InstructionEntity>();
 
-        public List<InstructionEntity> InstructionsR
+        public List<InstructionEntity> Instructions
         {
-            get => _instructionsr;
-            set => this.SetProperty(ref _instructionsr, value);
+            get => _instructions;
+            set => this.SetProperty(ref _instructions, value);
         }
         #endregion
 
         #region SessionEntity => Session
 
-        private SessionEntity _Session;
+        private static SessionEntity _Session;
 
         public SessionEntity Session
         {
@@ -85,7 +85,7 @@ namespace SensoStat.ViewModels.Base
 
         #region SessionEntity => Session
 
-        private List<PresentationEntity> _presentations = new List<PresentationEntity>();
+        private static List<PresentationEntity> _presentations = new List<PresentationEntity>();
 
         public List<PresentationEntity> Presentations
         {
@@ -103,16 +103,6 @@ namespace SensoStat.ViewModels.Base
         }
         #endregion
 
-        #region Instructions =>  List<string>
-        private List<string> _instructions = new List<string>() { "Vous allez désormais tester le savon", "Savonnez vous les mains avec le savon", "Quels sont les points positifs du savon" };
-
-        public List<string> Instructions
-        {
-            get => _instructions;
-            set => SetProperty(ref _instructions, value);
-        }
-        #endregion
-
         #region Instruction =>  string
         private string _instruction;
 
@@ -120,16 +110,6 @@ namespace SensoStat.ViewModels.Base
         {
             get => _instruction;
             set => SetProperty(ref _instruction, value);
-        }
-        #endregion
-
-        #region Products =>  List<string>
-        private List<string> _products = new List<string>() { "n°763", "n°869" };
-
-        public List<string> Products
-        {
-            get => _products;
-            set => SetProperty(ref _products, value);
         }
         #endregion
 
@@ -219,13 +199,12 @@ namespace SensoStat.ViewModels.Base
 
         public string GetInstruction()
         {
-            return InstructionsR[Index].Libelle;
+            return Instructions[Index].Libelle.Replace("#produit", $"n° {Presentations[IndexProduct].CodeProduct}");
         }
 
         public string GetProduct()
         {
-            //var test = $"n°{Presentations[IndexProduct].CodeProduct}";
-            return Products[IndexProduct];
+            return $"n° {Presentations[IndexProduct].CodeProduct}";
         }
 
         public string GetMsgAccueil()

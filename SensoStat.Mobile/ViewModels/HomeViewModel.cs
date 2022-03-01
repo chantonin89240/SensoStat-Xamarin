@@ -14,6 +14,8 @@ namespace SensoStat.Mobile.ViewModels
         public HomeViewModel(IAlertdialogService alertdialogService, INavigationService navigationService) : base(alertdialogService, navigationService)
         {
             NextCommand = new DelegateCommand(async () => await DoNextCommand());
+            Instruction = GetInstruction();
+            Product = GetProduct();
         }
         #endregion
         #region Lifecycle
@@ -30,8 +32,8 @@ namespace SensoStat.Mobile.ViewModels
 
         private async Task DoNextCommand()
         {
-            
-            if (Index < 1) // && !Intructions[Index+1].IsQuestion
+            var test = !Instructions[Index + 1].IsQuestion;
+            if (Index < Instructions.Count-1 && !Instructions[Index+1].IsQuestion)
             {
                 Index++;
                 Instruction = GetInstruction();
