@@ -45,6 +45,7 @@ namespace SensoStat.Mobile
             containerRegistry.RegisterForNavigation<AnswerPage, AnswerPageViewModel>(Constants.AnswerPage);
             containerRegistry.RegisterForNavigation<FinalPage, FinalPageViewModel>(Constants.FinalPage);
             containerRegistry.RegisterForNavigation<TextToSpeech, TextToSpeechViewModel>(Constants.TextToSpeech);
+            containerRegistry.RegisterForNavigation<Page1, ClassViewModel>(Constants.Page1);
         }
 
         private void RegisterRepositories(IContainerRegistry containerRegistry)

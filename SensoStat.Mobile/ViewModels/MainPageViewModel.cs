@@ -20,7 +20,8 @@ namespace SensoStat.Mobile.ViewModels
             _requestService = requestService;
             _databaseService = databaseService;
 
-            StartCommand = new DelegateCommand(async () => await DoStartCommand());  
+            StartCommand = new DelegateCommand(async () => await DoStartCommand());
+            NavigeCommand = new DelegateCommand(async () => await DoNavigeCommand());
         }
 
         #endregion
@@ -70,8 +71,17 @@ namespace SensoStat.Mobile.ViewModels
         {
             await NavigationService.NavigateAsync(Constants.HomeSession);
         }
+
+
+        public DelegateCommand NavigeCommand { get; set; }
+
+        private async Task DoNavigeCommand()
+        {
+            await NavigationService.NavigateAsync(Constants.Page1);
+        }
+
         #endregion
-        
+
 
         #region Methods
         private async Task GetSession()

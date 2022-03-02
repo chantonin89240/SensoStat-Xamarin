@@ -11,6 +11,7 @@ namespace SensoStat.Mobile.Commons
 		public const string AnswerPage = "AnswerPage";
 		public const string FinalPage = "FinalPage";
 		public const string TextToSpeech = "TextToSpeech";
+		public const string Page1 = "Page1";
 
 		public static string CognitiveServicesApiKey = "b2e32041353748908c8e5805be94fff0";
 		public static string CognitiveServicesRegion = "westeurope";
@@ -18,7 +19,7 @@ namespace SensoStat.Mobile.Commons
 
 		// Routes
 		public const string BaseServerAddress = "https://10.0.2.2:5001/api/";
-		public const string RandomEndpoint = "Pwa?hash=Hd/em3doKJJzz2o/2YeMiThr1ys7l37nqnL7K3i/huk=";
+		public const string RandomEndpoint = "Pwa?hash=i3RIsmij%2Bqe5BGN4LDqiSEMrf%2BUSZbGfPQ9%2F0iX7dx8%3D";
 		public const string PostResponse = "Pwa/";
 
 		// https://localhost:5001/api/Pwa?hash=H9UOcgfQWdmUZxrco804UKqSftKCEgE4FeU5QMbOJnw%3D

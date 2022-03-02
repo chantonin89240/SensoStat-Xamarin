@@ -216,7 +216,7 @@ namespace SensoStat.ViewModels.Base
 
         public string GetInstruction()
         {
-            return Instructions[Index].Libelle.Replace("#produit", $"n° {Presentations[IndexProduct].CodeProduct}");
+            return Instructions[Index].Libelle.Replace("#codeProduit", $"n° {Presentations[IndexProduct].CodeProduct}");
         }
 
         public string GetProduct()

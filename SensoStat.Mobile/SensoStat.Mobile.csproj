@@ -45,8 +45,6 @@
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
     <Folder Include="Helpers\Interface\" />
     <Folder Include="Repositories\Interface\" />
     <Folder Include="Models\Dtos\" />
@@ -58,5 +56,10 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\Answer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\Page1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
